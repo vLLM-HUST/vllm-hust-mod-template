@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "course-vllm-hust-mod"
+version = "0.1.0"
+description = "Starter bundle for the vLLM-HUST engine MOD course project"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.entry-points."vllm_hust.extension_bundles"]
+"edu.hust.course.preemption-starter" = "course_vllm_hust_mod"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+course_vllm_hust_mod = ["vllm-hust-extension-v0.3.json"]
