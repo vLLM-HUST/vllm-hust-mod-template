@@ -36,9 +36,10 @@ export VLLM_HUST_EXT_CONFIG="$PWD/.venv/mod-manager.json"
 vllm-hust-ext extension inspect edu.hust.course.preemption-starter
 vllm-hust-ext extension validate edu.hust.course.preemption-starter
 vllm-hust-ext extension enable edu.hust.course.preemption-starter
+vllm-hust-ext extension check edu.hust.course.preemption-starter
 vllm-hust-ext run -- vllm serve "$MODEL"
 ```
 
 先将 `MODEL` 设为本环境可用的模型。用能形成 KV 压力的负载检查策略调用。停止服务后，运行 `vllm-hust-ext extension disable edu.hust.course.preemption-starter`，使用相同命令与负载重跑基线。
 
-按 [实验记录](EXPERIMENT.md) 准备第 4、6、8 讲提交，在教学平台填写相应的仓库链接和提交 SHA。完整要求见[课程评分标准](https://courses.sage.org.ai/tutorials/assessment/#project-score)。
+按 [实验记录](EXPERIMENT.md) 准备第 4、6、8 讲提交，在教学平台填写相应的仓库链接和提交 SHA。基础分包括问题定义 20 分、实现质量 20 分、实验设计 25 分、结果解释 25 分、表达与复现 10 分。
