@@ -6,10 +6,10 @@
 
 ## CPU 冒烟测试
 
-使用 Python 3.10 或更新版本。在仓库根目录运行以下命令。
+使用 Python 3.10 或更新版本。在 Linux 或 WSL 的仓库根目录运行以下命令。Ubuntu 上若缺少 `venv` 模块，先安装 `python3-venv`。
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install .
 python -m unittest discover -s tests -v
@@ -29,8 +29,9 @@ Windows PowerShell 可用 `py -m venv .venv` 建环境，后续用 `.\.venv\Scri
 
 ```bash
 python -m pip install build
-python -m build --wheel
-python -m pip install dist/course_vllm_hust_mod-0.1.0-py3-none-any.whl
+wheel_dir="$(mktemp -d)"
+python -m build --wheel --outdir "$wheel_dir"
+python -m pip install "$wheel_dir"/*.whl
 python -m pip install 'vllm-hust-ext @ git+https://github.com/vLLM-HUST/extension-manager.git@6a26ae88acc14591817df9069b7c884dd1a4f86d'
 export VLLM_HUST_EXT_CONFIG="$PWD/.venv/mod-manager.json"
 vllm-hust-ext extension inspect edu.hust.course.preemption-starter
